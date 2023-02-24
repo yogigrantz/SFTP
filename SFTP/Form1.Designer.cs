@@ -35,7 +35,6 @@
             txtUsername = new TextBox();
             label3 = new Label();
             txtPassword = new TextBox();
-            label4 = new Label();
             txtFolderName = new TextBox();
             dgLocalFolder = new DataGridView();
             dgRemoteFolder = new DataGridView();
@@ -45,14 +44,21 @@
             btnExploreLocalFolder = new Button();
             lblMessage = new Label();
             txtLocalFolderName = new TextBox();
+            label5 = new Label();
+            label6 = new Label();
+            menuStrip1 = new MenuStrip();
+            serverListToolStripMenuItem = new ToolStripMenuItem();
+            btnDeleteLocal = new Button();
+            btnDeleteRemote = new Button();
             ((System.ComponentModel.ISupportInitialize)dgLocalFolder).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgRemoteFolder).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 28);
+            label1.Location = new Point(577, 47);
             label1.Name = "label1";
             label1.Size = new Size(87, 19);
             label1.TabIndex = 0;
@@ -61,15 +67,15 @@
             // 
             // txtServerName
             // 
-            txtServerName.Location = new Point(116, 25);
+            txtServerName.Location = new Point(670, 44);
             txtServerName.Name = "txtServerName";
-            txtServerName.Size = new Size(388, 26);
+            txtServerName.Size = new Size(390, 26);
             txtServerName.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(39, 72);
+            label2.Location = new Point(593, 91);
             label2.Name = "label2";
             label2.Size = new Size(71, 19);
             label2.TabIndex = 2;
@@ -77,15 +83,15 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(116, 69);
+            txtUsername.Location = new Point(670, 88);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(190, 26);
+            txtUsername.Size = new Size(192, 26);
             txtUsername.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(43, 115);
+            label3.Location = new Point(597, 134);
             label3.Name = "label3";
             label3.Size = new Size(67, 19);
             label3.TabIndex = 4;
@@ -93,34 +99,25 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(116, 112);
+            txtPassword.Location = new Point(670, 131);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(190, 26);
+            txtPassword.Size = new Size(192, 26);
             txtPassword.TabIndex = 5;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(27, 156);
-            label4.Name = "label4";
-            label4.Size = new Size(83, 19);
-            label4.TabIndex = 6;
-            label4.Text = "FolderName";
             // 
             // txtFolderName
             // 
-            txtFolderName.Location = new Point(116, 153);
+            txtFolderName.Location = new Point(670, 172);
             txtFolderName.Name = "txtFolderName";
-            txtFolderName.Size = new Size(190, 26);
+            txtFolderName.Size = new Size(311, 26);
             txtFolderName.TabIndex = 7;
             // 
             // dgLocalFolder
             // 
             dgLocalFolder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgLocalFolder.Location = new Point(30, 203);
+            dgLocalFolder.Location = new Point(30, 102);
             dgLocalFolder.Name = "dgLocalFolder";
             dgLocalFolder.RowTemplate.Height = 28;
-            dgLocalFolder.Size = new Size(485, 446);
+            dgLocalFolder.Size = new Size(485, 547);
             dgLocalFolder.TabIndex = 8;
             // 
             // dgRemoteFolder
@@ -134,6 +131,7 @@
             // 
             // btnUpload
             // 
+            btnUpload.Enabled = false;
             btnUpload.Location = new Point(521, 370);
             btnUpload.Name = "btnUpload";
             btnUpload.Size = new Size(50, 46);
@@ -144,6 +142,7 @@
             // 
             // btnDownload
             // 
+            btnDownload.Enabled = false;
             btnDownload.Location = new Point(521, 422);
             btnDownload.Name = "btnDownload";
             btnDownload.Size = new Size(50, 46);
@@ -154,7 +153,8 @@
             // 
             // btnListRemote
             // 
-            btnListRemote.Location = new Point(577, 157);
+            btnListRemote.Enabled = false;
+            btnListRemote.Location = new Point(987, 158);
             btnListRemote.Name = "btnListRemote";
             btnListRemote.Size = new Size(75, 40);
             btnListRemote.TabIndex = 12;
@@ -164,7 +164,7 @@
             // 
             // btnExploreLocalFolder
             // 
-            btnExploreLocalFolder.Location = new Point(466, 157);
+            btnExploreLocalFolder.Location = new Point(466, 57);
             btnExploreLocalFolder.Name = "btnExploreLocalFolder";
             btnExploreLocalFolder.Size = new Size(49, 40);
             btnExploreLocalFolder.TabIndex = 13;
@@ -176,7 +176,7 @@
             // 
             lblMessage.AutoSize = true;
             lblMessage.ForeColor = Color.Red;
-            lblMessage.Location = new Point(577, 32);
+            lblMessage.Location = new Point(30, 36);
             lblMessage.Name = "lblMessage";
             lblMessage.Size = new Size(46, 19);
             lblMessage.TabIndex = 14;
@@ -185,16 +185,75 @@
             // txtLocalFolderName
             // 
             txtLocalFolderName.Enabled = false;
-            txtLocalFolderName.Location = new Point(30, 658);
+            txtLocalFolderName.Location = new Point(118, 71);
             txtLocalFolderName.Name = "txtLocalFolderName";
-            txtLocalFolderName.Size = new Size(485, 26);
+            txtLocalFolderName.Size = new Size(342, 26);
             txtLocalFolderName.TabIndex = 15;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(30, 74);
+            label5.Name = "label5";
+            label5.Size = new Size(82, 19);
+            label5.TabIndex = 16;
+            label5.Text = "Local Folder";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(569, 178);
+            label6.Name = "label6";
+            label6.Size = new Size(95, 19);
+            label6.TabIndex = 17;
+            label6.Text = "Remote folder";
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { serverListToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1101, 27);
+            menuStrip1.TabIndex = 18;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // serverListToolStripMenuItem
+            // 
+            serverListToolStripMenuItem.Name = "serverListToolStripMenuItem";
+            serverListToolStripMenuItem.Size = new Size(84, 23);
+            serverListToolStripMenuItem.Text = "Server List";
+            // 
+            // btnDeleteLocal
+            // 
+            btnDeleteLocal.Enabled = false;
+            btnDeleteLocal.Location = new Point(440, 655);
+            btnDeleteLocal.Name = "btnDeleteLocal";
+            btnDeleteLocal.Size = new Size(75, 37);
+            btnDeleteLocal.TabIndex = 19;
+            btnDeleteLocal.Text = "Delete";
+            btnDeleteLocal.UseVisualStyleBackColor = true;
+            btnDeleteLocal.Click += btnDeleteLocal_Click;
+            // 
+            // btnDeleteRemote
+            // 
+            btnDeleteRemote.Enabled = false;
+            btnDeleteRemote.Location = new Point(987, 655);
+            btnDeleteRemote.Name = "btnDeleteRemote";
+            btnDeleteRemote.Size = new Size(75, 37);
+            btnDeleteRemote.TabIndex = 20;
+            btnDeleteRemote.Text = "Delete";
+            btnDeleteRemote.UseVisualStyleBackColor = true;
+            btnDeleteRemote.Click += btnDeleteRemote_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1101, 696);
+            ClientSize = new Size(1101, 704);
+            Controls.Add(btnDeleteRemote);
+            Controls.Add(btnDeleteLocal);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(txtLocalFolderName);
             Controls.Add(lblMessage);
             Controls.Add(btnExploreLocalFolder);
@@ -204,18 +263,21 @@
             Controls.Add(dgRemoteFolder);
             Controls.Add(dgLocalFolder);
             Controls.Add(txtFolderName);
-            Controls.Add(label4);
             Controls.Add(txtPassword);
             Controls.Add(label3);
             Controls.Add(txtUsername);
             Controls.Add(label2);
             Controls.Add(txtServerName);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "SFTP";
             ((System.ComponentModel.ISupportInitialize)dgLocalFolder).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgRemoteFolder).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -228,7 +290,6 @@
         private TextBox txtUsername;
         private Label label3;
         private TextBox txtPassword;
-        private Label label4;
         private TextBox txtFolderName;
         private DataGridView dgLocalFolder;
         private DataGridView dgRemoteFolder;
@@ -238,5 +299,11 @@
         private Button btnExploreLocalFolder;
         private Label lblMessage;
         private TextBox txtLocalFolderName;
+        private Label label5;
+        private Label label6;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem serverListToolStripMenuItem;
+        private Button btnDeleteLocal;
+        private Button btnDeleteRemote;
     }
 }
